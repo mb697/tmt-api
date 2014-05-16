@@ -1,0 +1,17 @@
+.header{background:#003e5a; color:#fff; padding:40px 0;}
+.header p{color:#ccc;}
+.header a{color:#fff;}
+.content{padding-bottom:40px;}
+.content .row{padding:10px 0;}
+.customer{background:#eee;}
+h1.page_title{margin:40px 0 60px 0;}
+h2{margin-top:10px; font-size:20px;}
+input[type="text"]{padding:10px; width:80%;}
+input[type="text"].sm{width:10%;}
+.input-group.country-group{padding:10px 0; width:50%;}
+input[type="submit"]{padding:10px 20px; background:#003e5a; color:#fff; font-weight:bold; border:none; border-radius:5px; font-size:20px;}
+.country-group button{padding:11px;}
+select{-webkit-appearance: menulist-button; padding:10px;}
+.tip{display:-inline-block; background:red; color:#fff; padding:5px 8px; border-radius:20px;}
+.tip:hover{color:#fff; text-decoration:none;}
+ul.dropdown-menu{max-height:200px; overflow:auto;}
