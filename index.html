@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Trust My Travel API Demo</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</head>
+
+<body>
+	
+	<div class="header">
+		<div class="container">
+			<h1>Payment Page</h1>
+        	<p>
+        		Please complete the details requested below and click pay.<br />
+        		You will then be routed to <a href="https://www.trustmytravel.com/" target="_blank">Trust My Travel</a>, our payment service provider.
+        	</p>
+      	</div>
+	</div>
+	
+	<form action="xmlrpcclientwp.php" method="post" id="add-booking">
+	
+		<div class="container content">
+			
+			<div class="row">
+				
+				<div class="col-sm-12">
+					
+					<h1 class="page_title">Items ordered</h1>
+					
+				</div>
+				
+			</div>
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Item</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[item][0]" value="Flights LHR - CPT" readonly="readonly" />
+      				<a href="#" class="tip" data-toggle="tooltip" title="Line items are optional. If you do pass them to the API, they need to be put in an array">?</a>
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Date</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[date][0]" value="2015-02-09" readonly="readonly" />
+      				<a href="#" class="tip" data-toggle="tooltip" title="All dates must be in YYYY-MM-DD format e.g. php date( 'Y-m-d' ) and valid (eg 2014-01-35 will fail).">?</a>
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Description</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[note][0]" value="First class with British Airways" readonly="readonly" />
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-12">
+					<hr />
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Item 2</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[item][1]" value="Accommodation in Cape Town" readonly="readonly" />
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Date</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[date][1]" value="2015-02-10" readonly="readonly" />
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Description</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[note][1]" value="Five nights at the One and Only hotel in the Cape Town waterfront" readonly="readonly" />
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-12">
+					<hr />
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Item 3</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[item][2]" value="Flights CPT - LHR" readonly="readonly" />
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Date</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[date][2]" value="2015-02-15" readonly="readonly" />
+				</div>
+				
+			</div>	
+				
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Description</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="line_items[note][2]" value="First Class with South African Airways" readonly="readonly" />
+				</div>
+				
+			</div>	
+			
+			<div class="row">
+				
+				<div class="col-sm-12">
+					<hr />
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Total Cost &pound;*</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="total" value="150,000.00" readonly="readonly" /> 
+					<a href="#" class="tip" data-toggle="tooltip" title="Only pass the value of the booking not the currency. The value passed must comply with the php FILTER_VALIDATE_FLOAT filter. All your payments must be in your base currency as defined on the TMT site">?</a>
+				</div>
+				
+			</div>		
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Holiday begins*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="date" value="2015-02-09" readonly="readonly" />
+					<a href="#" class="tip" data-toggle="tooltip" title="All dates must be in YYYY-MM-DD format e.g. php date( 'Y-m-d' ) and valid (eg 2014-01-35 will fail).">?</a>
+				</div>
+				
+			</div>		
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Holiday ends*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="date_end" value="2015-02-16" readonly="readonly" />
+					<a href="#" class="tip" data-toggle="tooltip" title="Holiday end date must be the same day, or later than, the start date. All dates must be in YYYY-MM-DD format e.g. php date( 'Y-m-d' ) and valid (eg 2014-01-35 will fail).">?</a>
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Reference:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="reference" value="BOOKING001" readonly="readonly" />
+					<a href="#" class="tip" data-toggle="tooltip" title="Passing a reference is optional, but it will help you cross-reference your bookings with TMT">?</a>
+				</div>
+				
+			</div>
+	</div><!--/.container-->
+	
+	<div class="customer">
+	
+		<div class="container content">
+					
+			<div class="row">
+				
+				<div class="col-sm-12">
+					
+					<h1 class="page_title">Customer Details</h1>
+					
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>First Name*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="firstname" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Surname*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="surname" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Email*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="email" value="" />
+					<a href="#" class="tip" data-toggle="tooltip" title="Must be a valid email address. Tested with php FILTER_VALIDATE_EMAIL filter.">?</a>
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Phone Number*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="phone" value="" />
+					<a href="#" class="tip" data-toggle="tooltip" title="Minimum of 7 characters. Maximum of 25 characters. Only numeric values, and the plus sign, minus sign, open bracket and close bracket are accepted. Spaces are not counted in the character count.">?</a>
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Address Line 1*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="address" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Address Line 2:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="address2" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>City*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="city" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Country*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<div class="input-group country-group">
+      					<div class="input-group-btn">
+        					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Country <span class="caret"></span></button>
+        					<ul class="dropdown-menu">
+								<li><a href="#" data-value="GB">United Kingdom</a></li>
+								<li><a href="#" data-value="US">United States</a></li>
+								<li><a href="#" data-value="AU">Australia</a></li>
+								<li><a href="#" data-value="ZA">South Africa</a></li>
+          						<li><a href="#" data-value="AF">Afghanistan</a></li>
+								<li><a href="#" data-value="AL">Albania</a></li>
+								<li><a href="#" data-value="DZ">Algeria</a></li>
+								<li><a href="#" data-value="AS">American Samoa</a></li>
+								<li><a href="#" data-value="AD">Andorra</a></li>
+								<li><a href="#" data-value="AO">Angola</a></li>
+								<li><a href="#" data-value="AI">Anguilla</a></li>
+								<li><a href="#" data-value="AQ">Antarctica</a></li>
+								<li><a href="#" data-value="AG">Antigua and Barbuda</a></li>
+								<li><a href="#" data-value="AR">Argentina</a></li>
+								<li><a href="#" data-value="AM">Armenia</a></li>
+								<li><a href="#" data-value="AW">Aruba</a></li>
+								<li><a href="#" data-value="AT">Austria</a></li>
+								<li><a href="#" data-value="AZ">Azerbaijan</a></li>
+								<li><a href="#" data-value="BS">Bahamas</a></li>
+								<li><a href="#" data-value="BH">Bahrain</a></li>
+								<li><a href="#" data-value="BD">Bangladesh</a></li>
+								<li><a href="#" data-value="BB">Barbados</a></li>
+								<li><a href="#" data-value="BY">Belarus</a></li>
+								<li><a href="#" data-value="BE">Belgium</a></li>
+								<li><a href="#" data-value="BZ">Belize</a></li>
+								<li><a href="#" data-value="BJ">Benin</a></li>
+								<li><a href="#" data-value="BM">Bermuda</a></li>
+								<li><a href="#" data-value="BT">Bhutan</a></li>
+								<li><a href="#" data-value="BO">Bolivia</a></li>
+								<li><a href="#" data-value="BA">Bosnia and Herzegovina</a></li>
+								<li><a href="#" data-value="BW">Botswana</a></li>
+								<li><a href="#" data-value="BV">Bouvet Island</a></li>
+								<li><a href="#" data-value="BR">Brazil</a></li>
+								<li><a href="#" data-value="BQ">British Antarctic Territory</a></li>
+								<li><a href="#" data-value="IO">British Indian Ocean Territory</a></li>
+								<li><a href="#" data-value="VG">British Virgin Islands</a></li>
+								<li><a href="#" data-value="BN">Brunei</a></li>
+								<li><a href="#" data-value="BG">Bulgaria</a></li>
+								<li><a href="#" data-value="BF">Burkina Faso</a></li>
+								<li><a href="#" data-value="BI">Burundi</a></li>
+								<li><a href="#" data-value="KH">Cambodia</a></li>
+								<li><a href="#" data-value="CM">Cameroon</a></li>
+								<li><a href="#" data-value="CA">Canada</a></li>
+								<li><a href="#" data-value="CT">Canton and Enderbury Islands</a></li>
+								<li><a href="#" data-value="CV">Cape Verde</a></li>
+								<li><a href="#" data-value="KY">Cayman Islands</a></li>
+								<li><a href="#" data-value="CF">Central African Republic</a></li>
+								<li><a href="#" data-value="TD">Chad</a></li>
+								<li><a href="#" data-value="CL">Chile</a></li>
+								<li><a href="#" data-value="CN">China</a></li>
+								<li><a href="#" data-value="CX">Christmas Island</a></li>
+								<li><a href="#" data-value="CC">Cocos [Keeling] Islands</a></li>
+								<li><a href="#" data-value="CO">Colombia</a></li>
+								<li><a href="#" data-value="KM">Comoros</a></li>
+								<li><a href="#" data-value="CG">Congo - Brazzaville</a></li>
+								<li><a href="#" data-value="CD">Congo - Kinshasa</a></li>
+								<li><a href="#" data-value="CK">Cook Islands</a></li>
+								<li><a href="#" data-value="CR">Costa Rica</a></li>
+								<li><a href="#" data-value="HR">Croatia</a></li>
+								<li><a href="#" data-value="CU">Cuba</a></li>
+								<li><a href="#" data-value="CY">Cyprus</a></li>
+								<li><a href="#" data-value="CZ">Czech Republic</a></li>
+								<li><a href="#" data-value="CI">Côte d’Ivoire</a></li>
+								<li><a href="#" data-value="DK">Denmark</a></li>
+								<li><a href="#" data-value="DJ">Djibouti</a></li>
+								<li><a href="#" data-value="DM">Dominica</a></li>
+								<li><a href="#" data-value="DO">Dominican Republic</a></li>
+								<li><a href="#" data-value="NQ">Dronning Maud Land</a></li>
+								<li><a href="#" data-value="EC">Ecuador</a></li>
+								<li><a href="#" data-value="EG">Egypt</a></li>
+								<li><a href="#" data-value="SV">El Salvador</a></li>
+								<li><a href="#" data-value="GQ">Equatorial Guinea</a></li>
+								<li><a href="#" data-value="ER">Eritrea</a></li>
+								<li><a href="#" data-value="EE">Estonia</a></li>
+								<li><a href="#" data-value="ET">Ethiopia</a></li>
+								<li><a href="#" data-value="FK">Falkland Islands</a></li>
+								<li><a href="#" data-value="FO">Faroe Islands</a></li>
+								<li><a href="#" data-value="FJ">Fiji</a></li>
+								<li><a href="#" data-value="FI">Finland</a></li>
+								<li><a href="#" data-value="FR">France</a></li>
+								<li><a href="#" data-value="GF">French Guiana</a></li>
+								<li><a href="#" data-value="PF">French Polynesia</a></li>
+								<li><a href="#" data-value="TF">French Southern Territories</a></li>
+								<li><a href="#" data-value="FQ">French Southern and Antarctic Territories</a></li>
+								<li><a href="#" data-value="GA">Gabon</a></li>
+								<li><a href="#" data-value="GM">Gambia</a></li>
+								<li><a href="#" data-value="GE">Georgia</a></li>
+								<li><a href="#" data-value="DE">Germany</a></li>
+								<li><a href="#" data-value="GH">Ghana</a></li>
+								<li><a href="#" data-value="GI">Gibraltar</a></li>
+								<li><a href="#" data-value="GR">Greece</a></li>
+								<li><a href="#" data-value="GL">Greenland</a></li>
+								<li><a href="#" data-value="GD">Grenada</a></li>
+								<li><a href="#" data-value="GP">Guadeloupe</a></li>
+								<li><a href="#" data-value="GU">Guam</a></li>
+								<li><a href="#" data-value="GT">Guatemala</a></li>
+								<li><a href="#" data-value="GG">Guernsey</a></li>
+								<li><a href="#" data-value="GN">Guinea</a></li>
+								<li><a href="#" data-value="GW">Guinea-Bissau</a></li>
+								<li><a href="#" data-value="GY">Guyana</a></li>
+								<li><a href="#" data-value="HT">Haiti</a></li>
+								<li><a href="#" data-value="HM">Heard Island and McDonald Islands</a></li>
+								<li><a href="#" data-value="HN">Honduras</a></li>
+								<li><a href="#" data-value="HK">Hong Kong SAR China</a></li>
+								<li><a href="#" data-value="HU">Hungary</a></li>
+								<li><a href="#" data-value="IS">Iceland</a></li>
+								<li><a href="#" data-value="IN">India</a></li>
+								<li><a href="#" data-value="ID">Indonesia</a></li>
+								<li><a href="#" data-value="IR">Iran</a></li>
+								<li><a href="#" data-value="IQ">Iraq</a></li>
+								<li><a href="#" data-value="IE">Ireland</a></li>
+								<li><a href="#" data-value="IM">Isle of Man</a></li>
+								<li><a href="#" data-value="IL">Israel</a></li>
+								<li><a href="#" data-value="IT">Italy</a></li>
+								<li><a href="#" data-value="JM">Jamaica</a></li>
+								<li><a href="#" data-value="JP">Japan</a></li>
+								<li><a href="#" data-value="JE">Jersey</a></li>
+								<li><a href="#" data-value="JT">Johnston Island</a></li>
+								<li><a href="#" data-value="JO">Jordan</a></li>
+								<li><a href="#" data-value="KZ">Kazakhstan</a></li>
+								<li><a href="#" data-value="KE">Kenya</a></li>
+								<li><a href="#" data-value="KI">Kiribati</a></li>
+								<li><a href="#" data-value="KW">Kuwait</a></li>
+								<li><a href="#" data-value="KG">Kyrgyzstan</a></li>
+								<li><a href="#" data-value="LA">Laos</a></li>
+								<li><a href="#" data-value="LV">Latvia</a></li>
+								<li><a href="#" data-value="LB">Lebanon</a></li>
+								<li><a href="#" data-value="LS">Lesotho</a></li>
+								<li><a href="#" data-value="LR">Liberia</a></li>
+								<li><a href="#" data-value="LY">Libya</a></li>
+								<li><a href="#" data-value="LI">Liechtenstein</a></li>
+								<li><a href="#" data-value="LT">Lithuania</a></li>
+								<li><a href="#" data-value="LU">Luxembourg</a></li>
+								<li><a href="#" data-value="MO">Macau SAR China</a></li>
+								<li><a href="#" data-value="MK">Macedonia</a></li>
+								<li><a href="#" data-value="MG">Madagascar</a></li>
+								<li><a href="#" data-value="MW">Malawi</a></li>
+								<li><a href="#" data-value="MY">Malaysia</a></li>
+								<li><a href="#" data-value="MV">Maldives</a></li>
+								<li><a href="#" data-value="ML">Mali</a></li>
+								<li><a href="#" data-value="MT">Malta</a></li>
+								<li><a href="#" data-value="MH">Marshall Islands</a></li>
+								<li><a href="#" data-value="MQ">Martinique</a></li>
+								<li><a href="#" data-value="MR">Mauritania</a></li>
+								<li><a href="#" data-value="MU">Mauritius</a></li>
+								<li><a href="#" data-value="YT">Mayotte</a></li>
+								<li><a href="#" data-value="FX">Metropolitan France</a></li>
+								<li><a href="#" data-value="MX">Mexico</a></li>
+								<li><a href="#" data-value="FM">Micronesia</a></li>
+								<li><a href="#" data-value="MI">Midway Islands</a></li>
+								<li><a href="#" data-value="MD">Moldova</a></li>
+								<li><a href="#" data-value="MC">Monaco</a></li>
+								<li><a href="#" data-value="MN">Mongolia</a></li>
+								<li><a href="#" data-value="ME">Montenegro</a></li>
+								<li><a href="#" data-value="MS">Montserrat</a></li>
+								<li><a href="#" data-value="MA">Morocco</a></li>
+								<li><a href="#" data-value="MZ">Mozambique</a></li>
+								<li><a href="#" data-value="MM">Myanmar [Burma]</a></li>
+								<li><a href="#" data-value="NA">Namibia</a></li>
+								<li><a href="#" data-value="NR">Nauru</a></li>
+								<li><a href="#" data-value="NP">Nepal</a></li>
+								<li><a href="#" data-value="NL">Netherlands</a></li>
+								<li><a href="#" data-value="AN">Netherlands Antilles</a></li>
+								<li><a href="#" data-value="NT">Neutral Zone</a></li>
+								<li><a href="#" data-value="NC">New Caledonia</a></li>
+								<li><a href="#" data-value="NZ">New Zealand</a></li>
+								<li><a href="#" data-value="NI">Nicaragua</a></li>
+								<li><a href="#" data-value="NE">Niger</a></li>
+								<li><a href="#" data-value="NG">Nigeria</a></li>
+								<li><a href="#" data-value="NU">Niue</a></li>
+								<li><a href="#" data-value="NF">Norfolk Island</a></li>
+								<li><a href="#" data-value="KP">North Korea</a></li>
+								<li><a href="#" data-value="MP">Northern Mariana Islands</a></li>
+								<li><a href="#" data-value="NO">Norway</a></li>
+								<li><a href="#" data-value="OM">Oman</a></li>
+								<li><a href="#" data-value="PC">Pacific Islands Trust Territory</a></li>
+								<li><a href="#" data-value="PK">Pakistan</a></li>
+								<li><a href="#" data-value="PW">Palau</a></li>
+								<li><a href="#" data-value="PS">Palestinian Territories</a></li>
+								<li><a href="#" data-value="PA">Panama</a></li>
+								<li><a href="#" data-value="PZ">Panama Canal Zone</a></li>
+								<li><a href="#" data-value="PG">Papua New Guinea</a></li>
+								<li><a href="#" data-value="PY">Paraguay</a></li>
+								<li><a href="#" data-value="YD">People's Democratic Republic of Yemen</a></li>
+								<li><a href="#" data-value="PE">Peru</a></li>
+								<li><a href="#" data-value="PH">Philippines</a></li>
+								<li><a href="#" data-value="PN">Pitcairn Islands</a></li>
+								<li><a href="#" data-value="PL">Poland</a></li>
+								<li><a href="#" data-value="PT">Portugal</a></li>
+								<li><a href="#" data-value="PR">Puerto Rico</a></li>
+								<li><a href="#" data-value="QA">Qatar</a></li>
+								<li><a href="#" data-value="RO">Romania</a></li>
+								<li><a href="#" data-value="RU">Russia</a></li>
+								<li><a href="#" data-value="RW">Rwanda</a></li>
+								<li><a href="#" data-value="RE">Réunion</a></li>
+								<li><a href="#" data-value="BL">Saint Barthélemy</a></li>
+								<li><a href="#" data-value="SH">Saint Helena</a></li>
+								<li><a href="#" data-value="KN">Saint Kitts and Nevis</a></li>
+								<li><a href="#" data-value="LC">Saint Lucia</a></li>
+								<li><a href="#" data-value="MF">Saint Martin</a></li>
+								<li><a href="#" data-value="PM">Saint Pierre and Miquelon</a></li>
+								<li><a href="#" data-value="VC">Saint Vincent and the Grenadines</a></li>
+								<li><a href="#" data-value="WS">Samoa</a></li>
+								<li><a href="#" data-value="SM">San Marino</a></li>
+								<li><a href="#" data-value="SA">Saudi Arabia</a></li>
+								<li><a href="#" data-value="SN">Senegal</a></li>
+								<li><a href="#" data-value="RS">Serbia</a></li>
+								<li><a href="#" data-value="CS">Serbia and Montenegro</a></li>
+								<li><a href="#" data-value="SC">Seychelles</a></li>
+								<li><a href="#" data-value="SL">Sierra Leone</a></li>
+								<li><a href="#" data-value="SG">Singapore</a></li>
+								<li><a href="#" data-value="SK">Slovakia</a></li>
+								<li><a href="#" data-value="SI">Slovenia</a></li>
+								<li><a href="#" data-value="SB">Solomon Islands</a></li>
+								<li><a href="#" data-value="SO">Somalia</a></li>
+								<li><a href="#" data-value="GS">South Georgia and the South Sandwich Islands</a></li>
+								<li><a href="#" data-value="KR">South Korea</a></li>
+								<li><a href="#" data-value="ES">Spain</a></li>
+								<li><a href="#" data-value="LK">Sri Lanka</a></li>
+								<li><a href="#" data-value="SD">Sudan</a></li>
+								<li><a href="#" data-value="SR">Suriname</a></li>
+								<li><a href="#" data-value="SJ">Svalbard and Jan Mayen</a></li>
+								<li><a href="#" data-value="SZ">Swaziland</a></li>
+								<li><a href="#" data-value="SE">Sweden</a></li>
+								<li><a href="#" data-value="CH">Switzerland</a></li>
+								<li><a href="#" data-value="SY">Syria</a></li>
+								<li><a href="#" data-value="ST">São Tomé and Príncipe</a></li>
+								<li><a href="#" data-value="TW">Taiwan</a></li>
+								<li><a href="#" data-value="TJ">Tajikistan</a></li>
+								<li><a href="#" data-value="TZ">Tanzania</a></li>
+								<li><a href="#" data-value="TH">Thailand</a></li>
+								<li><a href="#" data-value="TL">Timor-Leste</a></li>
+								<li><a href="#" data-value="TG">Togo</a></li>
+								<li><a href="#" data-value="TK">Tokelau</a></li>
+								<li><a href="#" data-value="TO">Tonga</a></li>
+								<li><a href="#" data-value="TT">Trinidad and Tobago</a></li>
+								<li><a href="#" data-value="TN">Tunisia</a></li>
+								<li><a href="#" data-value="TR">Turkey</a></li>
+								<li><a href="#" data-value="TM">Turkmenistan</a></li>
+								<li><a href="#" data-value="TC">Turks and Caicos Islands</a></li>
+								<li><a href="#" data-value="TV">Tuvalu</a></li>
+								<li><a href="#" data-value="UM">U.S. Minor Outlying Islands</a></li>
+								<li><a href="#" data-value="PU">U.S. Miscellaneous Pacific Islands</a></li>
+								<li><a href="#" data-value="VI">U.S. Virgin Islands</a></li>
+								<li><a href="#" data-value="UG">Uganda</a></li>
+								<li><a href="#" data-value="UA">Ukraine</a></li>
+								<li><a href="#" data-value="AE">United Arab Emirates</a></li>
+								<li><a href="#" data-value="UY">Uruguay</a></li>
+								<li><a href="#" data-value="UZ">Uzbekistan</a></li>
+								<li><a href="#" data-value="VU">Vanuatu</a></li>
+								<li><a href="#" data-value="VA">Vatican City</a></li>
+								<li><a href="#" data-value="VE">Venezuela</a></li>
+								<li><a href="#" data-value="VN">Vietnam</a></li>
+								<li><a href="#" data-value="WK">Wake Island</a></li>
+								<li><a href="#" data-value="WF">Wallis and Futuna</a></li>
+								<li><a href="#" data-value="EH">Western Sahara</a></li>
+								<li><a href="#" data-value="YE">Yemen</a></li>
+								<li><a href="#" data-value="ZM">Zambia</a></li>
+								<li><a href="#" data-value="ZW">Zimbabwe</a></li>
+								<li><a href="#" data-value="AX">Åland Islands</a></li>
+        					</ul>
+      					</div><!-- /btn-group -->
+      					<input type="text" name="country-display" class="country-display" readonly="readonly">&nbsp;
+      					<a href="#" class="tip" data-toggle="tooltip" title="Although we display the country name for ease of use, the corresponding two character code must be passed to TMT">?</a>
+    				</div><!-- /input-group -->
+				</div>
+				
+			</div>	
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Country Code*:</h2>
+				</div>
+				
+				<div class="col-sm-10">					
+      				<input type="text" name="country" class="country sm" readonly="readonly" />
+      				<a href="#" class="tip" data-toggle="tooltip" title="You don't have to display this, its simply to demonstrate the country codes">?</a>
+				</div>
+				
+			</div>		
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>State / Province:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="state" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2">
+					<h2>Zip / Postcode*:</h2>
+				</div>
+				
+				<div class="col-sm-10">
+					<input type="text" name="postcode" value="" />
+				</div>
+				
+			</div>			
+			
+			<div class="row">
+				
+				<div class="col-sm-2"></div>
+				
+				<div class="col-sm-10">
+					<input type="submit" value="pay booking" name="pay" />
+				</div>
+				
+			</div>	
+			
+		</div><!--/.container-->
+		
+	</div><!--/.customer-->
+	
+	</form>
+
+</body>
+</html>
