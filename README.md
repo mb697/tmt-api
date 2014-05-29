@@ -12,7 +12,6 @@ Our staging site does not have an SSL certificate. You will receive notification
 
 Expiry: 10/2014<br />
 Verification: 123<br />
-<br />
 4012888888881881<br />
 4111111111111111<br />
 4200000000000000 (3DSecure not available - Card Not Participating)<br />
@@ -23,21 +22,18 @@ Verification: 123<br />
 
 Expiry: 10/2014<br />
 Verification: 123<br />
-<br />
 4012888888881881
 
 <strong>Mastercard</strong>
 
 Expiry: 10/2014<br />
 Verification: 123<br />
-<br />
 5105105105105100<br />
 5453010000059543 (3DSecure enrolled) <br />
 5453010000059675 (3DSecure enrolled, but authentication will fail)<br />
-<br />
+
 <strong>Amex</strong>
 
 Expiry: 10/2014<br />
 Verification: 1234<br />
-<br />
 311111111111117
